@@ -18,7 +18,7 @@ def isDecimalInt(userInput):
     # decinteger is a nonzero number followed by any amount of numbers
     # or 0, followed by any amount of 0's
     # Ex: so input can be 000, but not 001
-    if len(userInput) > 1 and userInput[0] == '0' and userInput:
+    if len(userInput) > 1 and userInput[0] == '0':
         return False
     # if input is 000, it will be wrong, this needs to be fixed.
     
