@@ -36,34 +36,7 @@ def isDecimalInt(userInput):
                 state = 5;
     print(state in accepted_states)
 
-    
-    # 1 of 3 routes nfa could go
-    # check if 0th element is 0, because
-    # we need to check for leading zeros
-    #if userInput[0] == "0":
-    #    for x in userInput:
-    #        # if the first digit is 0 then the next characters
-    #        # can only be more 0's or an underscore
-     #       if x != 0 or x!= "_": 
-     #           return False;
-
-
-    # 2 of 3 routes nfa could go
-    #if userInput[0] == "_":
-    #    return False;
-
-
-    # 3 of 3 routes nfa could go
-    #if userInput[0] == [1-9]
-    # Need to add if condition to check for multiple underscores in a row like 1__1
-
-
-
-
-    
-    # If no checks fail, then it is a valid decimal integer
-    return True
-
+# End of isDecimalInt definition
 
 test = input("Enter the input string: ")
 
