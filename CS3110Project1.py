@@ -1,9 +1,10 @@
-import time
 #According to 2.4.5 Integer literals
 # The alphabet is (+,-,integers 0-9)
 #decinteger ::= nonzerodigit (["_"] digit)* | "0"+ (["_"] "0")*
-#octinteger ::=  "0" ("o" | "O") (["_"] octdigit)+
-#hexinteger ::=  "0" ("x" | "X") (["_"] hexdigit)+
+#decinteger are (1-9)(["_"] 0-9)* or 0+(["_"] "0")*
+#Underscores are ignored for determining the numeric value of the literal.
+#One underscore can occur between digits
+#leading zeros in a non-zero decimal number are not allowed
 
 #process : check if empty, remove +/- from string if there, check for letters, check for leading zeros
 
@@ -17,21 +18,27 @@ def isDecimalInt(userInput):
     if userInput[0] == "+" or userInput[0] == "-":
         userInput = userInput[1:] # UserInput is starts at index 1 instead of 0, thus removing +/-
 
-    # Do we need to check for letters?
 
-    # Checks if the first number is 0, because
-    # decinteger is a nonzero number followed by any amount of numbers
-    # or 0, followed by any amount of 0's
-    # Ex: so input can be 000, but not 001
+    #check if 0th element is 0, because
+    # we need to check for leading zeros
+    # if input is 000, it will be wrong, this needs to be fixed.
+    # This is a WIP
     if len(userInput) > 1 and userInput[0] == '0':
         return False
     
+    # or if len(UserInput) = 1 and userInput[0] == '0'
+    # means that it would only accept the input: "0"
+    
     if userInput[0] == "0":
         for x in userInput:
-            if x != 0 or x!= "_":
+            # if the first digit is 0 then the next characters
+            # can only be more 0's or an underscore
+            if x != 0 or x!= "_": 
                 return False;
 
-    # if input is 000, it will be wrong, this needs to be fixed.
+        # Need to add if condition to check for multiple underscores in a row like 1__1
+
+
 
 
     
@@ -60,5 +67,3 @@ print(isDecimalInt("012345")) # False, because leading 0 followed by nonzeros
 print(isDecimalInt("0")) # True
 print(isDecimalInt("0000")) # Should be True, but I'm getting false
 
-
-time.sleep(2) # just so the executable shows the result
