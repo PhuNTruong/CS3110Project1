@@ -1,4 +1,4 @@
-#According to 2.4.5 Integer literals
+1#According to 2.4.5 Integer literals
 # The alphabet is ("_" and integers 0-9)
 #decinteger ::= nonzerodigit (["_"] digit)* | "0"+ (["_"] "0")*
 #decinteger are (1-9)(["_"] 0-9)* or 0+(["_"] "0")*
@@ -18,11 +18,23 @@ def isDecimalInt(userInput):
             case 0: # if input is 0
                 if x == '0':
                     state = 1; # then the NFA moves to state 1
-                else:
-                    state = 0;
-            case 1:
-                if x == '1': # if input is 0 - 9
+                else: #state 10 is placeholder error state
+                    state = 10; # if the input is not 0, then it moves into an error state since its not accepted. 
+            case 1: # if input is 1-9
+                if x in [(userInput(x) for x in range(0,10))]: 
                     state = 1; # it remains in state 1
+                elif x == '0':
+                    state = 1;
+            case 2: # if input is "_" aka underscore
+                if x == '0':
+                    state = 9;
+            case 3:
+                state = 3;
+            case 4:
+                state = 4;
+            case 5:
+                state = 5;
+    print(state in accepted_states)
 
     
     # 1 of 3 routes nfa could go
@@ -55,22 +67,6 @@ def isDecimalInt(userInput):
 
 test = input("Enter the input string: ")
 
-print(test) # Test to print out input string
+isDecimalInt(test);
 
-print(test[0]); # Test to print out first element
-
-
-
-if isDecimalInt(test) == True:
-    print(test + " is a valid decimal integer")
-else:
-    print(test + " is not a valid decimal integer")
-
-#Example Tests
-print(isDecimalInt("")) # False, since its just a space
-print(isDecimalInt("12356")) # True
-print(isDecimalInt("+123")) # True
-print(isDecimalInt("012345")) # False, because leading 0 followed by nonzeros
-print(isDecimalInt("0")) # True
-print(isDecimalInt("0000")) # Should be True, but I'm getting false
 
