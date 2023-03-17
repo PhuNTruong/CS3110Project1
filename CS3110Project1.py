@@ -12,34 +12,61 @@ def isDecimalInt(userInput):
     # Switching over to case statements for better formatting
 
     state = 0; # Start at state 0
-    accepted_states = (0,);
+    accepted_states = (1,3,);
     for x in userInput:
         match state:
-            case 0: # if input is 0
+            case 0: 
+                # if input is 0, go to q1
+                # if input is 1-9, go to q3
+                # if input is "_" go to q4
                 if x == '0':
-                    state = 1; # then the NFA moves to state 1
-                else: #state 10 is placeholder error state
-                    state = 10; # if the input is not 0, then it moves into an error state since its not accepted. 
-            case 1: # if input is 1-9
-                if x in [(userInput(x) for x in range(0,10))]: 
-                    state = 1; # it remains in state 1
-                elif x == '0':
                     state = 1;
-            case 2: # if input is "_" aka underscore
+                elif x in [(userInput(x) for x in range(1,10))]: 
+                    state = 3;
+                elif x == '_':
+                    state = 4;
+            
+            case 1: 
+                # if input is 0, stay in q1
+                # if input is 1-9, go to q2
                 if x == '0':
-                    state = 9;
-            case 3:
-                state = 3;
-            case 4:
+                    state = 1;
+                elif x in [(userInput(x) for x in range(1,10))]:
+                    state = 2;
+            
+            case 2: 
+                # Once here, any input will still remain here
+                state = 2;
+                
+            case 3: 
+                # if input is 0-9, stays in q3
+                # If input is "_", go to q5
+                if x in [(userInput(x) for x in range(0,10))]:
+                    state = 3;
+                elif x == '_':
+                    state = 5;
+                
+            case 4: 
+                # Once here, any input will still remain here
                 state = 4;
+            
             case 5:
-                state = 5;
-    print(state in accepted_states)
+                # if input is 0-9, go to q3
+                # if input is "_", go to q4
+                if x in [(userInput(x) for x in range(0,10))]:
+                    state = 3;
+                elif x == '_':
+                    state = 4;
+
+    return(state in accepted_states)
 
 # End of isDecimalInt definition
 
 test = input("Enter the input string: ")
 
-isDecimalInt(test);
+if(isDecimalInt(test)) == True:
+    print(test + " is a valid Python decimal integer literal.")
+else:
+    print(test + " is not a valid Python decimal integer literal.")
 
 
