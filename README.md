@@ -6,14 +6,14 @@ Team ∅ members:
 - Amar Gandhi
 - Nich Rosen
 
-## Installation
+## ⚙️ Installation
 
 Clone the git repo:
 
 `git clone https://github.com/Pnutru/CS3110Project1`
 
 
-## Usage
+## 🧑‍💻 Usage
 
 1. CD into project directory:
 
