@@ -68,6 +68,51 @@ def isDecimalInt(userInput):
 
 # End of isDecimalInt definition
 
+
+def isBinaryInt(userInput: str):
+    state = 0
+    accepted_states = {3}
+    for x in userInput:
+        match state:
+            case 0:
+                # if 0 go to state 1 (binary int has to start with 0)
+                # if anything else go to null state
+                if x == '0':
+                    state = 1
+                else:
+                    state = 'null'
+            case 1:
+                # if b go to state 1 (binary int has to have b after 0)
+                # if anything else go to null state
+                if x == 'b':
+                    state = 2
+                else:
+                    state = 'null'
+            case 2:
+                # if we get a binary digit go to 3 (accept state)
+                # otherwise reject
+                if x in BIN_DIGIT:
+                    state = 3
+                else:
+                    state = 'null'
+            case 3:
+                # if we get a binary digit stay in 3 (accept state)
+                # if underscore go to state 2 (need another bin digit
+                #   after to be accepted
+                # reject if other chars
+                if x in BIN_DIGIT:
+                    state = 3
+                elif x == '_':
+                    state = 2
+                else:
+                    state = 'null'
+            case 'null':
+                # do nothing
+                pass
+
+    return state in accepted_states
+
+
 test = input("Enter the input string: ")
 
 if(isDecimalInt(test)) == True:
@@ -75,4 +120,9 @@ if(isDecimalInt(test)) == True:
 else:
     print(test + " is not a valid Python decimal integer literal.")
 
+
+if(isBinaryInt(test)) == True:
+    print(test + " is a valid Python binary integer literal.")
+else:
+    print(test + " is not a valid Python binary integer literal.")
 
