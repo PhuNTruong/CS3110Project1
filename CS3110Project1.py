@@ -1,10 +1,16 @@
-1#According to 2.4.5 Integer literals
+#According to 2.4.5 Integer literals
 # The alphabet is ("_" and integers 0-9)
 #decinteger ::= nonzerodigit (["_"] digit)* | "0"+ (["_"] "0")*
 #decinteger are (1-9)(["_"] 0-9)* or 0+(["_"] "0")*
 #Underscores are ignored for determining the numeric value of the literal.
 #One underscore can occur between digits
 #leading zeros in a non-zero decimal number are not allowed
+
+# Constants using python sets
+BIN_DIGIT = {'0', '1'}
+OCT_DIGIT = {str(x) for x in range(1, 8)}
+DEC_DIGIT = {str(x) for x in range(1, 10)}
+HEX_DIGIT = DEC_DIGIT.union({'A', 'B', 'C', 'D', 'E', 'F', 'a', 'b', 'c', 'd', 'e', 'f'})
 
 def isDecimalInt(userInput):
     # Checking for +/- and if the string is empty isn't required
