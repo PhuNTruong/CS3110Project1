@@ -135,50 +135,6 @@ def isNInt(userInput: str, digits: set, keyChars: set):
     return state in accepted_states
 
 
-def isBinaryInt(userInput: str):
-    state = 0
-    accepted_states = {3}
-    for x in userInput:
-        match state:
-            case 0:
-                # if 0 go to state 1 (binary int has to start with 0)
-                # if anything else go to null state
-                if x == '0':
-                    state = 1
-                else:
-                    state = 'null'
-            case 1:
-                # if b go to state 1 (binary int has to have b after 0)
-                # if anything else go to null state
-                if x == 'b' or x == 'B':
-                    state = 2
-                else:
-                    state = 'null'
-            case 2:
-                # if we get a binary digit go to 3 (accept state)
-                # otherwise reject
-                if x in BIN_DIGIT:
-                    state = 3
-                else:
-                    state = 'null'
-            case 3:
-                # if we get a binary digit stay in 3 (accept state)
-                # if underscore go to state 2 (need another bin digit
-                #   after to be accepted
-                # reject if other chars
-                if x in BIN_DIGIT:
-                    state = 3
-                elif x == '_':
-                    state = 2
-                else:
-                    state = 'null'
-            case 'null':
-                # do nothing
-                pass
-
-    return state in accepted_states
-
-
 test = input("Enter the input string: ")
 
 if(isDecimalInt(test)) == True:
