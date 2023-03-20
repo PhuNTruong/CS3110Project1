@@ -5,3 +5,9 @@ Team ∅ Members:
 Phu Truong
 Amar Gandhi
 Nich Rosen
+
+## Installation
+
+1. Clone the git repo.
+
+`git clone https://github.com/Pnutru/CS3110Project1`
