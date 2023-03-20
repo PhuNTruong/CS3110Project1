@@ -84,7 +84,7 @@ def isBinaryInt(userInput: str):
             case 1:
                 # if b go to state 1 (binary int has to have b after 0)
                 # if anything else go to null state
-                if x == 'b':
+                if x == 'b' or x == 'B':
                     state = 2
                 else:
                     state = 'null'
