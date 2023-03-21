@@ -138,24 +138,24 @@ def isNInt(userInput: str, digits: set, keyChars: set):
 test = input("Enter the input string: ")
 
 if(isDecimalInt(test)) == True:
-    print(test + " is a valid Python decimal integer literal.")
+    print(test + " is a valid Python decimal integer literal ✅")
 else:
-    print(test + " is not a valid Python decimal integer literal.")
+    print(test + " is not a valid Python decimal integer literal ❌")
 
 binOctHex = isBinOctHexInt(test)
 
 if binOctHex == 'binary':
-    print(test + " is a valid Python binary integer literal.")
+    print(test + " is a valid Python binary integer literal ✅")
 else:
-    print(test + " is not a valid Python binary integer literal.")
+    print(test + " is not a valid Python binary integer literal ❌")
 
 if binOctHex == 'octal':
-    print(test + " is a valid Python octal integer literal.")
+    print(test + " is a valid Python octal integer literal ✅")
 else:
-    print(test + " is not a valid Python octal integer literal.")
+    print(test + " is not a valid Python octal integer literal ❌")
 
 if binOctHex == 'hexadecimal':
-    print(test + " is a valid Python hexadecimal integer literal.")
+    print(test + " is a valid Python hexadecimal integer literal ✅")
 else:
-    print(test + " is not a valid Python hexadecimal integer literal.")
+    print(test + " is not a valid Python hexadecimal integer literal ❌")
 
