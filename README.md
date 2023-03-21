@@ -24,3 +24,13 @@ Clone the git repo:
     `python CS3110Project1.py`
 
 1. The program will then prompt you for input. Enter an input, to which the program will respond valid or not valid.
+
+
+## 🖼️ Program Run Screenshots
+![screenshot_1.png](screenshot_1.png)
+
+![screenshot_2.png](screenshot_2.png)
+
+![screenshot_3.png](screenshot_3.png)
+
+![screenshot_4.png](screenshot_4.png)
